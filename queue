@@ -1,0 +1,124 @@
+#include <stdio.h>
+#define MAXLEN 100
+
+
+typedef struct {
+
+    int element[MAXLEN];
+    int front,rear;
+
+}queue;
+
+
+queue init()
+{
+    queue Q;
+    Q.front=Q.rear=-1;
+    return Q;
+}
+
+int isEmpty(queue Q)
+{
+    if(Q.front==-1 || Q.front>Q.rear)
+        return 1;
+    else
+        return 0;
+}
+
+int isFull(queue Q)
+{
+    if(Q.rear)==MAXLEN-1)
+        return 1;
+    else
+        return 0;
+}
+
+int front (queue Q)
+{
+ if (isEmpty(Q))
+    printf("Empty queue n");
+ else
+    return Q.element[Q.top];
+}
+
+queue eneque(queue Q,int x)
+{
+    if(isFull(Q))
+    {
+        printf("OVERFLOW\n");;
+    }
+    else{
+    	Q.front=Q.rear=0;
+    	Q.element[Q.rear]=x;
+        ++Q.rear;
+        Q.element[Q.rear]=x;
+    }
+    return Q;
+}
+
+
+stack pop(stack S)
+{
+    if(isEmpty(S))
+    {
+        printf("UNDERFLOW\n");
+    }
+    else{
+        --S.top;
+    }
+    return S;
+}
+
+void print (stack S)
+{
+int i;
+for (i=S.top; i>=0; i--)
+printf("%d ",S.element[i]);
+}
+
+
+
+void main ()
+{   int choice=0;
+    stack S;
+    S=init();
+    printf("*********Stack operations using array*********");
+
+printf("\n----------------------------------------------\n");
+    while(choice != 4)
+    {
+        printf("Chose one from the below options...\n");
+        printf("\n1.Push\n2.Pop\n3.Show\n4.Exit");
+        printf("\n Enter your choice \n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            {   int el;
+                printf("Enter an element to enter into stack \n");
+                scanf("%d",&el);
+                S=push(S,el);
+                break;
+            }
+            case 2:
+            {
+                S=pop(S);
+                break;
+            }
+            case 3:
+            {
+                print(S);
+                break;
+            }
+            case 4:
+            {
+                printf("Exiting....");
+                break;
+            }
+            default:
+            {
+                printf("Please Enter valid choice ");
+            }
+        };
+    }
+}
