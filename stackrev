@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+
+#define max 100
+
+class Stack{
+	int arr[max];
+	int top;
+
+public:
+	
+		Stack(){
+			top=-1;
+		}
+		
+	bool isEmpty(){
+			return top==-1;
+		}
+				
+		bool isFull(){
+			return top== max-1;
+		}
+		void push(char ch){
+			if(isFull()){
+				cout<<"FULL";
+			}
+			else{
+				arr[++top]=ch;
+			}
+		}
+		
+		char pop(){
+		if(isEmpty()){
+				cout<<"empty";
+			}
+			else{
+				return arr[top--];
+			}	
+		}
+};
+
+int main(){
+	string str;
+	cout<<"enter";
+	cin>>str;
+	
+	Stack s;
+	
+	
+	for(int i=0;i<str.length();i++){
+		s.push(str[i]);
+	}
+	
+		for(int i=0;i<str.length();i++){
+		str[i]=s.pop();
+	}na
+	 cout << "Reversed string: " << str << endl;
+return 0;
+}
